@@ -1,0 +1,77 @@
+a
+{
+	color:#555;
+}
+
+body
+{
+	font-family:consolas;
+	color:#000;
+	background-color:#eed;
+	font-size:230%;
+	text-align:center;
+}
+
+input, select
+{
+	font-size:100%;
+	text-align:center;
+	
+}
+
+h1
+{
+	font-family:courier;
+	color:#fff;
+	background-color:#333;
+}
+
+/*
+ *	Classes
+ */
+
+.history
+{
+	font-family:saab;
+	font-style:italic;
+	font-size:100%;
+	color:#555;
+}
+
+.logout
+{
+	text-align:right;
+}
+
+.main_table
+{
+	font-family:consolas;
+	font-size:100%;
+	text-align:center;
+}
+
+.number_input
+{
+	font-family:consolas;
+	width:70px;
+}
+
+.select_input
+{
+	font-family:monospace;
+}
+
+.sub_title
+{
+	font-family:serif;
+}
+
+.text_input
+{
+	font-family:monospace;
+}
+
+.text_output
+{
+	
+}
