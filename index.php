@@ -5,7 +5,6 @@
 	include("./lib/connection.php");
 	include("./lib/database.php");
 	
-	define("SELECTBOXSIZE", "OOOOOOOOOOOOOOOO");
 	
 	$personage = new Template("index.html");
 
@@ -20,7 +19,6 @@
 	 *	Race Select from Database
 	 */
 	$race = new Template("./templates/selectRace.html");
-	$race->set("SelectBoxSize", SELECTBOXSIZE);
 	$data = DBRead("race", "ORDER BY name");
 	foreach($data as $row)
 	{
@@ -40,7 +38,6 @@
 	 *	Class Select from Database
 	 */
 	$class = new Template("./templates/selectClass.html");
-	$class->set("SelectBoxSize", SELECTBOXSIZE);
 	$data = DBRead("class", "ORDER BY name");
 	foreach($data as $row)
 	{
@@ -58,7 +55,6 @@
 	 *	Adventure Select from Database
 	 */
 	$adventure = new Template("./templates/selectAdventure.html");
-	$adventure->set("SelectBoxSize", SELECTBOXSIZE);
 	$data = DBRead("adventure", "ORDER BY name");
 	foreach($data as $row)
 	{
@@ -77,7 +73,6 @@
 	 *	Benefit Select from Database
 	 */
 	$benefit = new Template("./templates/selectBenefit.html");
-	$benefit->set("SelectBoxSize", SELECTBOXSIZE);
 	$data = DBRead("benefit", "ORDER BY name");
 	foreach($data as $row)
 	{
@@ -97,7 +92,6 @@
 	 *	Injury Select from Database
 	 */
 	$injury  = new Template("./templates/selectInjury.html");
-	$injury->set("SelectBoxSize", SELECTBOXSIZE);
 	$data = DBRead("injury", "ORDER BY name");
 	foreach($data as $row)
 	{
@@ -117,7 +111,6 @@
 	 *	Knowledge Select from Database
 	 */
 	$knowledge = new Template("./templates/selectKnowledge.html");
-	$knowledge->set("SelectBoxSize", SELECTBOXSIZE);
 	$data = DBRead("knowledge", "ORDER BY name");
 	foreach($data as $row)
 	{

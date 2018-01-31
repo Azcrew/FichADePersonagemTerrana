@@ -2,7 +2,7 @@
 	/*
 	 *Database Config
 	 */
-	define('DB_HOSTNAME', '192.168.15.10');
+	define('DB_HOSTNAME', 'localhost');
 	define('DB_USERNAME', 'terrana');
   //define('DB_PASSWORD', '<password>');
 	define('DB_DATABASE', 'terrana');
