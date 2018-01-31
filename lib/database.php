@@ -10,7 +10,7 @@
 		return $result;
 	}
 	
-	//Insert in database
+	//Insert a register in database
 	function DBInsert($table, array $data)
 	{
 		$table = DB_PREFIX.'_'.$table;
@@ -24,15 +24,16 @@
 		return DBExecute($query);
 	}
 	
-	//Read database
+	//Read database register
 	function DBRead($table, $params = null, $fields = '*')
 	{
-		if($params)
-			$params = " ".$params;
-			
+		$params = ($params) ? " {$params}" : null;
+					
 		$table = DB_PREFIX.'_'.$table;
 		$query = "SELECT {$fields} FROM {$table}{$params}";
-		
+        
+        //var_dump($query);
+
 		$result = DBExecute($query);
 		
 		if(!mysqli_num_rows($result))
@@ -48,3 +49,33 @@
 			return $data;
 		}
 	}
+	
+	//Alter database register
+	function DBUpdate($table, array $data, $where = null)
+	{
+		$table = DB_PREFIX.'_'.$table;
+		
+		foreach ($data as $key => $value) {
+			$fields[] = "{$key} = '{$value}'"; 
+		}
+		$fields = implode(', ', $fields);		
+		
+		$where = ($where) ? " WHERE {$where}" : null;
+		
+		$query = "UPDATE {$table} SET {$fields}{$where}";
+		$query = DBExecute($query);
+		
+		return $query;
+	}
+	
+	function DBDelete($table, $where)
+	{
+		$table = DB_PREFIX.'_'.$table;
+		
+		$where = ($where) ? " WHERE {$where}" : null;
+		
+		$query = "DELETE FROM {$table}{$where}";
+		DBExecute($query);
+	}
+	
+?>

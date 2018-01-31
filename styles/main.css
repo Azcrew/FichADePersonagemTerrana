@@ -1,6 +1,7 @@
 a
 {
-	color:#555;
+    color: #555;
+    text-align: right;
 }
 
 body
@@ -16,6 +17,7 @@ input, select
 {
 	font-size:100%;
     text-align:center;
+    
 }
 
 h1
@@ -37,7 +39,14 @@ h1
 	color:#555;
 }
 
-.logout
+.login_input
+{
+    margin-bottom: 1%;
+    text-align: center;
+    width: 50%;
+}
+
+a.logout
 {
 	text-align:right;
 }
@@ -53,7 +62,7 @@ h1
 {
     font-family: monospace;
     text-align: left;
-    width: 100%;
+    width: 300px;
 }
 
 .number_input

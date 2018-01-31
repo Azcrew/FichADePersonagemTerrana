@@ -5,9 +5,7 @@
 	include("./lib/connection.php");
     include("./lib/database.php");
     
-    require_once "./lib/authCode.php";
-    
-    $login 	= new Template("./templates/index.html");
+    $login 	= new Template("./templates/login.html");
 
 
     $login->set("PageCharset", HTML_CHARSET);
