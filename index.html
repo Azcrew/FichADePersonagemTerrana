@@ -1,147 +1,240 @@
 <!DOCTYPE html5>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset={PageCharset}"/>
-		<link rel='stylesheet' type='text/css' href='{StyleSheetLink}'>
-		<script type="text/javascript" src="{JavaScriptLink}"></script>
-		<title> {PageTitle} </title>		
-		<link rel="icon" type="image/png" sizes="32x32" href="/icon32.png">
-	</head>
-	<body>
-		<h1>Novo Personagem</h1>
-		<form id="form">
-			<table width="90%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
-				<tr>
-					<td colspan="100"> <input type="text" id="nome" size="16" class="text_input" placeholder="Nome"> </td>
-					<td colspan="100"> {SelectRace} </td>
-					<td colspan="100"> {SelectClass} </td>
-				</tr>
-				<tr>
-					<td colspan="100"> {SelectAdventure} </td>
-					<td colspan="100"> <div id="nivel">  </div> </td>
-					<td colspan="100"> <div id="pontos">  </div> </td>
-				</tr>
-				<tr><td><br></td></tr>
-				<tr>
-					<td colspan="100"> 
-						<table width="50%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
-							<tr>
-								<td colspan="2">Características</td>
-							</tr>
-							<tr>
-								<td> <div title="Armadura"> Arm </div></td>
-								<td><input type='number' id='armadura' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td> <div title="Focus"> Foc </div> </td>
-								<td><input type='number' id='focus' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td> <div title="Força"> For </div> </td>
-								<td><input type='number' id='forca' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td> <div title="Habilidade"> Hab </div> </td>
-								<td><input type='number' id='habilidade' class='number_input' onChange='changeCar()'/></td>
-								<tr>
-								</tr>
-								<td> <div title="Resistencia"> Res </div> </td>
-								<td><input type='number' id='resistencia' class='number_input' onChange='changeCar()'/></td>
-								<tr>
-								</tr>
-								<td> <div title="Precisão"> Pre </div> </td>
-								<td><input type='number' id='precisao' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-						</table>
-					</td>
-					<td colspan="100">
-						<table width="50%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
-							<tr>
-								<td colspan="2">Focus</td>
-							</tr>
-							<tr>
-								<td> <div title="Agua"> Ag </div> </td>
-								<td><input type='number' id='agua' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td> <div title="Ar"> Ar </div> </td>
-								<td><input type='number' id='ar' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td> <div title="Fogo"> Fo </div> </td>
-								<td><input type='number' id='fogo' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td> <div title="Luz"> Lu </div> </td>
-								<td><input type='number' id='luz' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td><div title="Terra"> Te </div> </td>
-								<td><input type='number' id='terra' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-							<tr>
-								<td> <div title="Trevas"> Tr </div> </td>
-								<td><input type='number' id='trevas' class='number_input' onChange='changeCar()'/></td>
-							</tr>
-						</table>
-					</td>
-					<td colspan="100">
-						<table width="20%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
-							<tr>
-								<td colspan="2">Detalhes</td>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={PageCharset}" />
+    <link rel='stylesheet' type='text/css' href='{StyleSheetLink}'>
+    <script type="text/javascript" src="{JavaScriptLink}"></script>
+    <title> {PageTitle} </title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon32.png">
+</head>
+
+<body>
+    <h1>Novo Personagem</h1>
+    <form id="form">
+        <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
+            <tr>
+                <td colspan="100">
+                    <input type="text" id="nome" size="16" class="text_input" placeholder="Nome"> </td>
+                <td colspan="100"> {SelectRace} </td>
+                <td colspan="100"> {SelectClass} </td>
+            </tr>
+            <tr>
+                <td colspan="100"> {SelectAdventure} </td>
+                <td colspan="100">
+                    <div id="nivel"> </div>
+                </td>
+                <td colspan="100">
+                    <div id="pontos"> </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="100">
+                    <table width="50%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
+                        <tr>
+                            <td colspan="2">Características</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Armadura"> Arm </div>
+                            </td>
+                            <td>
+                                <input type='number' id='armadura' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Focus"> Foc </div>
+                            </td>
+                            <td>
+                                <input type='number' id='focus' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Força"> For </div>
+                            </td>
+                            <td>
+                                <input type='number' id='forca' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Habilidade"> Hab </div>
+                            </td>
+                            <td>
+                                <input type='number' id='habilidade' class='number_input' onChange='changeCar()' />
+                            </td>
+                            <tr>
                             </tr>
-                            <tr>                 
-                                <td> <div class="text_output" title="Pontos de Vida"> PV </div> </td>
-                                <td> <div id="PV" class="text_output"> 0 </div> </td>
+                            <td>
+                                <div title="Resistencia"> Res </div>
+                            </td>
+                            <td>
+                                <input type='number' id='resistencia' class='number_input' onChange='changeCar()' />
+                            </td>
+                            <tr>
                             </tr>
-                            <tr>   
-                                <td> <div class="text_output" title="Regeneração de PV"> RPV </div> </td>
-                                <td> <div id="RPV" class="text_output"> 0 </div> </td>
-                            </tr>
-                            <tr>   
-                                <td> <div class="text_output" title="Pontos de Magia"> PM </div> </td>
-                                <td> <div id="PM" class="text_output"> 0 </div> </td>
-                            </tr>
-                            <tr>   
-                                <td> <div class="text_output" title="Regeneração de PM"> RPM </div> </td>
-                                <td> <div id="RPM" class="text_output"> 0 </div> </td>
-                            </tr>
-                            <tr>   
-                                <td> <div class="text_output" title="Pontos de Stamina"> PS </div> </td>
-                                <td> <div id="ataque" class="text_output"> 0 </div> </td>
-                            </tr>
-                            <tr>  
-                                <td> <div class="text_output" title="Regeneração de PS"> RPS </div> </td>
-                                <td> <div id="defesa" class="text_output"> 0 </div> </td>
-                            </tr>
-						</table>
-					</td>
-				</tr>
-				<tr><td><br></td></tr>
-				<tr> 
-					<td colspan="100"> Vantagens </td>
-					<td colspan="100"> Desvantagens </td>
-					<td colspan="100"> Perícias  </td>
-				</tr>
-				<tr>
-					<td colspan="5"/>
-					<td colspan="90"> {SelectBenefit} </td>
-					<td colspan="10"/>
-					<td colspan="90"> {SelectInjury} </td>
-					<td colspan="10"/>
-					<td colspan="90"> {SelectKnowledge} </td>
-					<td colspan="5"/>
-				</tr>
-				<tr><td><br></td></tr>
-				<tr> 
-					<td colspan="300">História do Personagem</td> 
-				</tr>
-				<tr> 
-					<td colspan="300"> <input type="text" id="historia" placeholder="Faça uma descrição breve do seu Personagem" class="history"/> </td> 
-				</tr>
-			</table>
-			<br>
-			<input type="submit" id="criar" value="Criar" class="input_button"/>
-        </form>
-	</body>
+                            <td>
+                                <div title="Precisão"> Pre </div>
+                            </td>
+                            <td>
+                                <input type='number' id='precisao' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td colspan="100">
+                    <table width="50%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
+                        <tr>
+                            <td colspan="2">Focus</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Agua"> Ag </div>
+                            </td>
+                            <td>
+                                <input type='number' id='agua' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Ar"> Ar </div>
+                            </td>
+                            <td>
+                                <input type='number' id='ar' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Fogo"> Fo </div>
+                            </td>
+                            <td>
+                                <input type='number' id='fogo' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Luz"> Lu </div>
+                            </td>
+                            <td>
+                                <input type='number' id='luz' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Terra"> Te </div>
+                            </td>
+                            <td>
+                                <input type='number' id='terra' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div title="Trevas"> Tr </div>
+                            </td>
+                            <td>
+                                <input type='number' id='trevas' class='number_input' onChange='changeCar()' />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td colspan="100">
+                    <table width="20%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
+                        <tr>
+                            <td colspan="2">Detalhes</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text_output" title="Pontos de Vida"> PV </div>
+                            </td>
+                            <td>
+                                <div id="PV" class="text_output"> 0 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text_output" title="Regeneração de PV"> RPV </div>
+                            </td>
+                            <td>
+                                <div id="RPV" class="text_output"> 0 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text_output" title="Pontos de Magia"> PM </div>
+                            </td>
+                            <td>
+                                <div id="PM" class="text_output"> 0 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text_output" title="Regeneração de PM"> RPM </div>
+                            </td>
+                            <td>
+                                <div id="RPM" class="text_output"> 0 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text_output" title="Pontos de Stamina"> PS </div>
+                            </td>
+                            <td>
+                                <div id="ataque" class="text_output"> 0 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text_output" title="Regeneração de PS"> RPS </div>
+                            </td>
+                            <td>
+                                <div id="defesa" class="text_output"> 0 </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="100"> Vantagens </td>
+                <td colspan="100"> Desvantagens </td>
+                <td colspan="100"> Perícias </td>
+            </tr>
+            <tr>
+                <td colspan="5" />
+                <td colspan="90"> {SelectBenefit} </td>
+                <td colspan="10" />
+                <td colspan="90"> {SelectInjury} </td>
+                <td colspan="10" />
+                <td colspan="90"> {SelectKnowledge} </td>
+                <td colspan="5" />
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="300">História do Personagem</td>
+            </tr>
+            <tr>
+                <td colspan="300">
+                    <input type="text" id="historia" placeholder="Faça uma descrição breve do seu Personagem" class="history" /> </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" id="criar" value="Criar" class="input_button" />
+    </form>
+</body>
+
 </html>
