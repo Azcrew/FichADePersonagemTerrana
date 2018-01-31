@@ -15,8 +15,7 @@ body
 input, select
 {
 	font-size:100%;
-	text-align:center;
-	
+    text-align:center;
 }
 
 h1
@@ -50,6 +49,13 @@ h1
 	text-align:center;
 }
 
+.mult_select_input
+{
+    font-family: monospace;
+    text-align: left;
+    width: 100%;
+}
+
 .number_input
 {
 	font-family:consolas;
@@ -58,7 +64,9 @@ h1
 
 .select_input
 {
-	font-family:monospace;
+    font-family: monospace;
+    text-align: left;
+    width: 95%;
 }
 
 .sub_title
@@ -68,10 +76,6 @@ h1
 
 .text_input
 {
-	font-family:monospace;
-}
-
-.text_output
-{
-	
+    font-family:monospace;
+    width: 95%;
 }
