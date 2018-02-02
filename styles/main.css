@@ -6,7 +6,7 @@ a
 
 body
 {
-	font-family:consolas;
+    font-family: 'Indie Flower', cursive;
 	color:#000;
 	background-color:#eed;
 	font-size:230%;
@@ -15,9 +15,13 @@ body
 
 input, select
 {
+    font-family: 'Indie Flower', cursive;
 	font-size:100%;
     text-align:center;
-    
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    border:0 none;
+
 }
 
 h1
@@ -30,61 +34,66 @@ h1
 /*
  *	Classes
  */
-
-.history
+ 
+.history_input
 {
-	font-family:saab;
-	font-style:italic;
-	font-size:100%;
-	color:#555;
-}
-
-.login_input
-{
-    margin-bottom: 1%;
-    text-align: center;
-    width: 50%;
-}
-
-a.logout
-{
-	text-align:right;
+    width: 95%;
 }
 
 .main_table
 {
-	font-family:consolas;
-	font-size:100%;
-	text-align:center;
+    font-size:100%;
+    text-align:center;
 }
 
 .mult_select_input
 {
-    font-family: monospace;
     text-align: left;
     width: 300px;
 }
 
 .number_input
 {
-	font-family:consolas;
-	width:70px;
+    width:70px;
 }
 
-.select_input
+.number_input_master
 {
-    font-family: monospace;
+    width:20%;
+}
+
+.select_input, .select_input_master
+{
     text-align: left;
     width: 95%;
 }
 
-.sub_title
+.submit_input, .submit_input_master
 {
-	font-family:serif;
+    
+    text-align: center;
+    border: none;
+    color: #fff;
+    background-color: #555;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    cursor:pointer;
+    width: 20%;
+
 }
 
 .text_input
 {
-    font-family:monospace;
-    width: 95%;
+    text-align: center;
+    width: 50%;
+}
+.text_input_master
+{
+    text-align: center;
+    width: 40%;
+}
+
+.user
+{
+    text-align: left;
 }

@@ -21,7 +21,7 @@
 		
 		$query = "INSERT INTO {$table} ( {$fields} ) VALUES ( $values )";
 		
-		return DBExecute($query);
+        return DBExecute($query);
 	}
 	
 	//Read database register
@@ -32,8 +32,6 @@
 		$table = DB_PREFIX.'_'.$table;
 		$query = "SELECT {$fields} FROM {$table}{$params}";
         
-        //var_dump($query);
-
 		$result = DBExecute($query);
 		
 		if(!mysqli_num_rows($result))
