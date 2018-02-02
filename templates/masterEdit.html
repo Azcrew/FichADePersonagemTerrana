@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset={PageCharset}" />
     <link rel='stylesheet' type='text/css' href='{StyleSheetLink}'>
+
     <title> {PageTitle} </title>
     <link rel="icon" type="image/png" sizes="32x32" href="/icon32.png">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
@@ -11,17 +12,15 @@
 
 <body>
     <header>
-        <h1>Login</h1>
+        <h1>{Title}</h1>
+        <a href="/php/master.php" class="user">
+            <div>
+                Voltar
+            </div>
+        </a>
     </header>
-    <form method="post" action="/php/auth.php">
-        <br><br>
-        <a href="/php/register.php">Novo no Site</a>
-        <br><br>
-        <input name="user" type="text" class="text_input" placeholder="Usuario"/>
-        <br><br>
-        <input name="pass" type="password" class="text_input" placeholder="Senha"/>
-        <br><br>
-        <input type="submit" class="submit_input" value="Login">
+    <form action="/php/masterRequestDB.php?t={DBTable}" method="get">
+        {Content}
     </form>
 </body>
 

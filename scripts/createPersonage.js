@@ -35,7 +35,7 @@ var ptsDesv = 0;
 var modDesv = {};
 var ptsPeri = 0;
 
-const file = "db.php";
+const file = "../php/api.php";
 const modStats = 10;
 const euler = 0.2718 / 10;
 
@@ -69,7 +69,7 @@ function selectAdventure(id) {
     var url = file + "?t=adventure&i=" + id + "&f=";
     nivel = dbRequest(url + "level");
     pontos = dbRequest(url + "points");
-    document.getElementById("nivel").innerText = "Nivel - " + nivel;
+    document.getElementById("level").innerText = "Nivel - " + nivel;
     alterPoints();
     alterDetails();
 }
@@ -78,40 +78,40 @@ function selectAdventure(id) {
 function changeCar() {
     //adquire os valores definidos pelo usuario para as caracteristicas e focus
     //se o valor for negativo define ele como 0
-    armadura = document.getElementById("armadura").value;
+    armadura = document.getElementById("armor").value;
     armadura = armadura >= 0 ? armadura : 0;
 
     focus = document.getElementById("focus").value;
     focus = focus >= 0 ? focus : 0;
 
-    forca = document.getElementById("forca").value;
+    forca = document.getElementById("strength").value;
     forca = forca >= 0 ? forca : 0;
 
-    habilidade = document.getElementById("habilidade").value;
+    habilidade = document.getElementById("ability").value;
     habilidade = habilidade >= 0 ? habilidade : 0;
 
-    precisao = document.getElementById("precisao").value;
+    precisao = document.getElementById("accuracy").value;
     precisao = precisao >= 0 ? precisao : 0;
 
-    resistencia = document.getElementById("resistencia").value;
+    resistencia = document.getElementById("resistance").value;
     resistencia = resistencia >= 0 ? resistencia : 0;
 
-    agua = document.getElementById("agua").value;
+    agua = document.getElementById("water").value;
     agua = agua >= 0 ? agua : 0;
 
-    ar = document.getElementById("ar").value;
+    ar = document.getElementById("air").value;
     ar = ar >= 0 ? ar : 0;
 
-    fogo = document.getElementById("fogo").value;
+    fogo = document.getElementById("fire").value;
     fogo = fogo >= 0 ? fogo : 0;
 
-    luz = document.getElementById("luz").value;
+    luz = document.getElementById("ligth").value;
     luz = luz >= 0 ? luz : 0;
 
-    terra = document.getElementById("terra").value;
+    terra = document.getElementById("earth").value;
     terra = terra >= 0 ? terra : 0;
 
-    trevas = document.getElementById("trevas").value;
+    trevas = document.getElementById("darkness").value;
     trevas = trevas >= 0 ? trevas : 0;
 
     //chama as funções de alteração da interface
@@ -155,12 +155,12 @@ function alterDetails() {
     pericia = habilidade * modPeri
 
     //exibe os detalhes
-    document.getElementById("PV").innerText = pv;
-    document.getElementById("RPV").innerText = rpv;
-    document.getElementById("PM").innerText = pm;
-    document.getElementById("RPM").innerText = rpm;
-    document.getElementById("ataque").innerText = atk;
-    document.getElementById("defesa").innerText = def;
+    document.getElementById("HP").innerText = pv;
+    document.getElementById("HPR").innerText = rpv;
+    document.getElementById("MP").innerText = pm;
+    document.getElementById("MPR").innerText = rpm;
+    document.getElementById("attack").innerText = atk;
+    document.getElementById("defense").innerText = def;
 }
 
 //responsavel por verificar e exibir os pontos de personagem
@@ -207,7 +207,7 @@ function alterPoints() {
         alert("Limite de Pontos de Perícias ultrapassado em " + Math.abs(knowledgeTemp) + " ponto(s)");
     }
     //exibe os pontos restantes
-    document.getElementById("pontos").innerText = pontosTemp;
+    document.getElementById("points").innerText = pontosTemp;
 }
 
 window.onload = function () {   //TODO Mudar tudo para este metodo, simplifica o html e da mais liberdade (Apenas na segunda versão)
@@ -256,5 +256,4 @@ window.onload = function () {   //TODO Mudar tudo para este metodo, simplifica o
         ptsPeri = temp;
         alterPoints();
     });
-
 }

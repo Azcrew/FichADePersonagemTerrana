@@ -1,30 +1,32 @@
 <!DOCTYPE html5>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset={PageCharset}" />
-    <link rel='stylesheet' type='text/css' href='{StyleSheetLink}'>
+    <link rel="stylesheet" type="text/css" href="{StyleSheetLink}">
     <script type="text/javascript" src="{JavaScriptLink}"></script>
     <title> {PageTitle} </title>
     <link rel="icon" type="image/png" sizes="32x32" href="/icon32.png">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 </head>
 
 <body>
     <h1>Novo Personagem</h1>
-    <form id="form">
-        <table width="90%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
+    <form action="{Action}" method="POST">
+        <table width="75%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
             <tr>
                 <td colspan="100">
-                    <input type="text" id="nome" size="16" class="text_input" placeholder="Nome"> </td>
+                    <input type="text" name="nome" size="16" class="history_input" placeholder="Nome"> </td>
                 <td colspan="100"> {SelectRace} </td>
                 <td colspan="100"> {SelectClass} </td>
             </tr>
             <tr>
                 <td colspan="100"> {SelectAdventure} </td>
                 <td colspan="100">
-                    <div id="nivel"> </div>
+                    <div id="level" name="level"> </div>
                 </td>
                 <td colspan="100">
-                    <div id="pontos"> </div>
+                    <div id="points" name="points"> </div>
                 </td>
             </tr>
             <tr>
@@ -43,7 +45,7 @@
                                 <div title="Armadura"> Arm </div>
                             </td>
                             <td>
-                                <input type='number' id='armadura' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="armor" name="armor" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -51,7 +53,7 @@
                                 <div title="Focus"> Foc </div>
                             </td>
                             <td>
-                                <input type='number' id='focus' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="focus" name="focus" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -59,7 +61,7 @@
                                 <div title="Força"> For </div>
                             </td>
                             <td>
-                                <input type='number' id='forca' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="strength" name="strength" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -67,7 +69,7 @@
                                 <div title="Habilidade"> Hab </div>
                             </td>
                             <td>
-                                <input type='number' id='habilidade' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="ability" name="ability" class="number_input" onChange="changeCar()" />
                             </td>
                             <tr>
                             </tr>
@@ -75,7 +77,7 @@
                                 <div title="Resistencia"> Res </div>
                             </td>
                             <td>
-                                <input type='number' id='resistencia' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="resistance" name="resistance" class="number_input" onChange="changeCar()" />
                             </td>
                             <tr>
                             </tr>
@@ -83,7 +85,7 @@
                                 <div title="Precisão"> Pre </div>
                             </td>
                             <td>
-                                <input type='number' id='precisao' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="accuracy" name="accuracy" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                     </table>
@@ -91,14 +93,14 @@
                 <td colspan="100">
                     <table width="50%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
                         <tr>
-                            <td colspan="2">Focus</td>
+                            <td colspan="2">Elementos</td>
                         </tr>
                         <tr>
                             <td>
                                 <div title="Agua"> Ag </div>
                             </td>
                             <td>
-                                <input type='number' id='agua' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="water" name="water" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -106,7 +108,7 @@
                                 <div title="Ar"> Ar </div>
                             </td>
                             <td>
-                                <input type='number' id='ar' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="air" name="air" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -114,7 +116,7 @@
                                 <div title="Fogo"> Fo </div>
                             </td>
                             <td>
-                                <input type='number' id='fogo' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="fire" name="fire" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -122,7 +124,7 @@
                                 <div title="Luz"> Lu </div>
                             </td>
                             <td>
-                                <input type='number' id='luz' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="ligth" name="ligth" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -130,7 +132,7 @@
                                 <div title="Terra"> Te </div>
                             </td>
                             <td>
-                                <input type='number' id='terra' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="earth" name="earth" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                         <tr>
@@ -138,7 +140,7 @@
                                 <div title="Trevas"> Tr </div>
                             </td>
                             <td>
-                                <input type='number' id='trevas' class='number_input' onChange='changeCar()' />
+                                <input type="number" id="darkness" name="darkness" class="number_input" onChange="changeCar()" />
                             </td>
                         </tr>
                     </table>
@@ -153,7 +155,7 @@
                                 <div class="text_output" title="Pontos de Vida"> PV </div>
                             </td>
                             <td>
-                                <div id="PV" class="text_output"> 0 </div>
+                                <div id="HP" name="HP" class="text_output"> 0 </div>
                             </td>
                         </tr>
                         <tr>
@@ -161,7 +163,7 @@
                                 <div class="text_output" title="Regeneração de PV"> RPV </div>
                             </td>
                             <td>
-                                <div id="RPV" class="text_output"> 0 </div>
+                                <div id="HPR" name="HPR" class="text_output"> 0 </div>
                             </td>
                         </tr>
                         <tr>
@@ -169,7 +171,7 @@
                                 <div class="text_output" title="Pontos de Magia"> PM </div>
                             </td>
                             <td>
-                                <div id="PM" class="text_output"> 0 </div>
+                                <div id="MP" name="MP" class="text_output"> 0 </div>
                             </td>
                         </tr>
                         <tr>
@@ -177,7 +179,7 @@
                                 <div class="text_output" title="Regeneração de PM"> RPM </div>
                             </td>
                             <td>
-                                <div id="RPM" class="text_output"> 0 </div>
+                                <div id="MPR" name="MPR" class="text_output"> 0 </div>
                             </td>
                         </tr>
                         <tr>
@@ -185,7 +187,7 @@
                                 <div class="text_output" title="Pontos de Stamina"> PS </div>
                             </td>
                             <td>
-                                <div id="ataque" class="text_output"> 0 </div>
+                                <div id="attack" name="attack" class="text_output"> 0 </div>
                             </td>
                         </tr>
                         <tr>
@@ -193,7 +195,7 @@
                                 <div class="text_output" title="Regeneração de PS"> RPS </div>
                             </td>
                             <td>
-                                <div id="defesa" class="text_output"> 0 </div>
+                                <div id="defense" name="defense" class="text_output"> 0 </div>
                             </td>
                         </tr>
                     </table>
@@ -228,11 +230,11 @@
             </tr>
             <tr>
                 <td colspan="300">
-                    <input type="text" id="historia" placeholder="Faça uma descrição breve do seu Personagem" class="history" /> </td>
+                    <input type="text" name="history" placeholder="Faça uma descrição breve do seu Personagem" class="history_input" /> </td>
             </tr>
         </table>
         <br>
-        <input type="submit" id="criar" value="Criar" class="input_button" />
+        <input type="submit" value="Criar" class="submit_input" />
     </form>
 </body>
 
