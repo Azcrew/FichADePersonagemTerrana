@@ -9,6 +9,13 @@
     
     $login 	= new Template(_ROOT_."/templates/login.html");
 
+    $login->set("Error", "");
+    if($_GET['error'])
+    {
+        $login->set("Error", $_GET['error']);
+    }
+
+//    $login->set("Error", $_GET['error'] ? $_GET['error'] : "");
 
     $login->set("PageCharset", HTML_CHARSET);
 	$login->set("PageTitle", HTML_TITLE);
