@@ -19,7 +19,7 @@
 	$personage->set("StyleSheetLink", MAIN_CSS);
     
     /*
-     *  Playable Character or Not 
+     *  Playable Character or Master 
      */
     $personage->set("Action", "/php/createPersonage.php");
     if($_GET['type'] == "npc")

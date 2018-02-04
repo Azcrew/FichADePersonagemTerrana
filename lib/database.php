@@ -19,8 +19,8 @@
 		$fields = implode(", ", array_keys($data));
 		$values = "'".implode("', '", $data)."'"; 
 		
-		$query = "INSERT INTO {$table} ( {$fields} ) VALUES ( $values )";
-		
+        $query = "INSERT INTO {$table} ( {$fields} ) VALUES ( $values )";
+        
         return DBExecute($query);
 	}
 	
