@@ -36,6 +36,7 @@
         $submit = new Template($templateInput);
         $submit->set("Type", "submit");
         $submit->set("Value", "Criar");
+        $submit->set("Name", "submit");
 
         $input = new Template($templateInput);
 
@@ -69,13 +70,13 @@
                 $template->add("Content", $raceCost->output());
 
                 $raceHP = new Template($templateInput);
-                $raceHP->set("Name", "HP");
+                $raceHP->set("Name", "modPV");
                 $raceHP->set("Type", "number");
                 $raceHP->set("PlaceHolder", "Modif. PV");
                 $template->add("Content", $raceHP->output());
 
                 $raceMP = new Template($templateInput);
-                $raceMP->set("Name", "MP");
+                $raceMP->set("Name", "modPM");
                 $raceMP->set("Type", "number");
                 $raceMP->set("PlaceHolder", "Modif. PM");
                 $template->add("Content", $raceMP->output());

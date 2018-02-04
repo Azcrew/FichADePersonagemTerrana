@@ -3,10 +3,10 @@
 	 *Database Settings
 	 */
 	define('DB_HOSTNAME', 'localhost');
-	define('DB_USERNAME', '<user name>');
-        define('DB_PASSWORD', '<password>');
-	define('DB_DATABASE', '<table name>');
-	define('DB_PREFIX', '<table prefix>');
+	define('DB_USERNAME', 'terrana');
+ //define('DB_PASSWORD', '<password>');
+	define('DB_DATABASE', 'terrana');
+	define('DB_PREFIX', 'tdb');
 	define('DB_CHARSET', 'utf8');
 	
 	/*
