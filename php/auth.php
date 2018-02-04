@@ -38,7 +38,6 @@
     }
     else
     {
-        echo ("Login não registrado!");
-        header("location: /php/login.php?error=naoregistrado");
+        header("location: /php/login.php?error=Nao Registrado");
     }
 
