@@ -34,7 +34,10 @@ h1
 /*
  *	Classes
  */
- 
+ .error
+ {
+    color: #f00;
+ }
 .history_input
 {
     width: 95%;
