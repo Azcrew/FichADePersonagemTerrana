@@ -2,11 +2,11 @@
 	/*
 	 *Database Settings
 	 */
-	define('DB_HOSTNAME', 'localhost');
-	define('DB_USERNAME', 'terrana');
- //define('DB_PASSWORD', '<password>');
-	define('DB_DATABASE', 'terrana');
-	define('DB_PREFIX', 'tdb');
+	define('DB_HOSTNAME', '<database link>');
+	define('DB_USERNAME', '<user>');
+    define('DB_PASSWORD', '<password>');
+	define('DB_DATABASE', '<database name>');
+	define('DB_PREFIX', '<database prefix>');
 	define('DB_CHARSET', 'utf8');
 	
 	/*
@@ -14,7 +14,7 @@
 	 */
 	define('HTML_CHARSET', 'utf-8');
 	define('HTML_TITLE', 'Terrana');
-    define('MAIN_CSS', '/styles/main.css');
+    define('MAIN_CSS', '../styles/main.css');
     
     /*
      *  Encryption Settings
