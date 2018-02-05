@@ -1,2 +1,3 @@
 #configs and passwords
-/config/*.*
+!/config
+config/*
