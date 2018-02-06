@@ -1,23 +1,22 @@
 <?php
-    define("_ROOT_", "/var/www/html");
+
+	include("../class/template.class");
+	include("../config/config.php");
+	include("../config/pass.php");
+	include("../lib/connection.php");
+    include("../lib/database.php");
     
-	include(_ROOT_."/class/template.class");
-	include(_ROOT_."/config/config.php");
-	include(_ROOT_."/config/pass.php");
-	include(_ROOT_."/lib/connection.php");
-    include(_ROOT_."/lib/database.php");
-    
-    require_once "/var/www/html/lib/authCode.php";
+    require_once "../lib/authCode.php";
 
     if($_SESSION['privileges'])
     {
-        $template = new Template(_ROOT_."/templates/masterEdit.html");
+        $template = new Template("../templates/masterEdit.html");
 
         $template->set("PageCharset", HTML_CHARSET);
     	$template->set("PageTitle", HTML_TITLE);
         $template->set("StyleSheetLink", MAIN_CSS);
 
-        $templateInput = _ROOT_."/templates/input.html";
+        $templateInput = "../templates/input.html";
 
         $name = new Template($templateInput);
         $name->set("Name", "name");
@@ -196,7 +195,7 @@
     }
     else
     {
-        header("location: /php/home.php");
+        header("location: ../php/home.php");
     }
 ?>
     

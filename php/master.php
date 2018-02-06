@@ -1,18 +1,17 @@
 <?php
-    define("_ROOT_", "/var/www/html");
     
-	include(_ROOT_."/class/template.class");
-	include(_ROOT_."/config/config.php");
-	include(_ROOT_."/config/pass.php");
-	include(_ROOT_."/lib/connection.php");
-    include(_ROOT_."/lib/database.php");
+	include("../class/template.class");
+	include("../config/config.php");
+	include("../config/pass.php");
+	include("../lib/connection.php");
+    include("../lib/database.php");
     
-    require_once "/var/www/html/lib/authCode.php";
+    require_once "../lib/authCode.php";
     
     session_start();
     if($_SESSION['privileges'])
     {
-        $template 	= new Template("/var/www/html/templates/master.html"); 
+        $template 	= new Template("../templates/master.html"); 
 
         $template->set("PageCharset", HTML_CHARSET);
 	    $template->set("PageTitle", HTML_TITLE);
@@ -28,6 +27,6 @@
     }
     else
     {
-        header("location: /php/home.php");
+        header("location: ../php/home.php");
     }
 ?>

@@ -1,11 +1,10 @@
 <?php
-    define("_ROOT_", "/var/www/html");
     
-	include(_ROOT_."/class/template.class");
-	include(_ROOT_."/config/config.php");
-	include(_ROOT_."/config/pass.php");
-	include(_ROOT_."/lib/connection.php");
-    include(_ROOT_."/lib/database.php");
+	include("../class/template.class");
+	include("../config/config.php");
+	include("../config/pass.php");
+	include("../lib/connection.php");
+    include("../lib/database.php");
     
     $recCode = null;
 
@@ -31,11 +30,11 @@
         $_SESSION['user'] = $_POST['user'];
         $_SESSION['pass'] = $_POST['pass'];
 
-        header("location: /php/auth.php");
+        header("location: ../php/auth.php");
     }
     else
     {
-        $register 	= new Template(_ROOT_."/templates/register.html");
+        $register 	= new Template("../templates/register.html");
     
     
         $register->set("PageCharset", HTML_CHARSET);
