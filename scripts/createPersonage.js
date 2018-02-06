@@ -51,14 +51,14 @@ function dbRequest(url) {
 
 //requisita as informações necessarias ao site e altera seus valores referentes
 function selectRace(id) {
-    var url = file + "?t=race&i=" + id + "&f=";
+    var url = file + "?table=race&id=" + id + "&field=";
     modpv = dbRequest(url + "modPV");
     modpm = dbRequest(url + "modPM");
     alterDetails();
 }
 
 function selectClass(id) {
-    var url = file + "?t=class&i=" + id + "&f=";
+    var url = file + "?table=class&id=" + id + "&field=";
     modPeri = dbRequest(url + "modKnow");
     modClas = dbRequest(url + "modifier");
     alterPoints();
@@ -66,7 +66,7 @@ function selectClass(id) {
 
 //requisita as informações necessarias ao site e altera seus valores referentes 
 function selectAdventure(id) {
-    var url = file + "?t=adventure&i=" + id + "&f=";
+    var url = file + "?table=adventure&id=" + id + "&field=";
     nivel = dbRequest(url + "level");
     pontos = dbRequest(url + "points");
     document.getElementById("level").innerText = "Nivel - " + nivel;
@@ -221,7 +221,7 @@ window.onload = function () {   //TODO Mudar tudo para este metodo, simplifica o
         var temp = 0;
 
         for (var i = 0; i < idVant.length; i++) {
-            var url = file + "?t=benefit&i=" + idVant[i] + "&f=";
+            var url = file + "?table=benefit&id=" + idVant[i] + "&field=";
 
             temp += parseInt(dbRequest(url + "cost"));
             modVant[i] = dbRequest(url + "modifier");
@@ -235,7 +235,7 @@ window.onload = function () {   //TODO Mudar tudo para este metodo, simplifica o
         var temp = 0;
 
         for (var i = 0; i < idDesv.length; i++) {
-            var url = file + "?t=injury&i=" + idDesv[i] + "&f=";
+            var url = file + "?table=injury&id=" + idDesv[i] + "&field=";
 
             temp -= parseInt(dbRequest(url + "cost"));
             modDesv[i] = dbRequest(url + "modifier");
@@ -249,7 +249,7 @@ window.onload = function () {   //TODO Mudar tudo para este metodo, simplifica o
         var temp = 0;
 
         for (var i = 0; i < idPeri.length; i++) {
-            var url = file + "?t=knowledge&i=" + idPeri[i] + "&f=";
+            var url = file + "?table=knowledge&id=" + idPeri[i] + "&field=";
 
             temp += parseInt(dbRequest(url + "cost"));
         }
