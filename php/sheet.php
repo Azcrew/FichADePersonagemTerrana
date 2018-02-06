@@ -1,15 +1,14 @@
 <?php
-    define("_ROOT_", "/var/www/html");
 
-	include(_ROOT_."/class/template.class");
-	include(_ROOT_."/config/config.php");
-	include(_ROOT_."/config/pass.php");
-	include(_ROOT_."/lib/connection.php");
-	include(_ROOT_."/lib/database.php");
+	include("../class/template.class");
+	include("../config/config.php");
+	include("../config/pass.php");
+	include("../lib/connection.php");
+	include("../lib/database.php");
     
-    require_once _ROOT_."/lib/authCode.php";
+    require_once "../lib/authCode.php";
     
-	$personage = new Template(_ROOT_."/templates/sheet.html");
+	$personage = new Template("../templates/sheet.html");
 
 	/************************************************************
 	 *	HTML Definitions
@@ -21,21 +20,21 @@
     /*
      *  Playable Character or Master 
      */
-    $personage->set("Action", "/php/createPersonage.php");
+    $personage->set("Action", "../php/createPersonage.php");
     if($_GET['type'] == "npc")
     {
-        $personage->set("Action", "/php/createNPC.php");   
+        $personage->set("Action", "../php/createNPC.php");   
     }
 
 
 	/************************************************************
 	 *	Race Select from Database
 	 */
-	$race = new Template(_ROOT_."/templates/selectRace.html");
+	$race = new Template("../templates/selectRace.html");
 	$data = DBRead("race", "ORDER BY name");
 	foreach($data as $row)
 	{
-		$option = new Template(_ROOT_."/templates/optionRace.html");
+		$option = new Template("../templates/optionRace.html");
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("Cost", $row['cost']);
@@ -49,11 +48,11 @@
 	/************************************************************
 	 *	Class Select from Database
 	 */
-	$class = new Template(_ROOT_."/templates/selectClass.html");
+	$class = new Template("../templates/selectClass.html");
 	$data = DBRead("class", "ORDER BY name");
 	foreach($data as $row)
 	{
-		$option = new Template(_ROOT_."/templates/optionClass.html");
+		$option = new Template("../templates/optionClass.html");
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("Cost", $row['cost']);
@@ -65,11 +64,11 @@
 	/************************************************************
 	 *	Adventure Select from Database
 	 */
-	$adventure = new Template(_ROOT_."/templates/selectAdventure.html");
+	$adventure = new Template("../templates/selectAdventure.html");
 	$data = DBRead("adventure", "ORDER BY name");
 	foreach($data as $row)
 	{
-		$option = new Template(_ROOT_."/templates/optionAdventure.html");
+		$option = new Template("../templates/optionAdventure.html");
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("InitialLevel", $row['level']);
@@ -82,11 +81,11 @@
 	/************************************************************
 	 *	Benefit Select from Database
 	 */
-	$benefit = new Template(_ROOT_."/templates/selectBenefit.html");
+	$benefit = new Template("../templates/selectBenefit.html");
 	$data = DBRead("benefit", "ORDER BY name");
 	foreach($data as $row)
 	{
-		$option = new Template(_ROOT_."/templates/optionBenefit.html");
+		$option = new Template("../templates/optionBenefit.html");
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("Cost", $row['cost']);
@@ -100,11 +99,11 @@
 	/************************************************************
 	 *	Injury Select from Database
 	 */
-	$injury  = new Template(_ROOT_."/templates/selectInjury.html");
+	$injury  = new Template("../templates/selectInjury.html");
 	$data = DBRead("injury", "ORDER BY name");
 	foreach($data as $row)
 	{
-		$option = new Template(_ROOT_."/templates/optionInjury.html");
+		$option = new Template("../templates/optionInjury.html");
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("Cost", $row['cost']);
@@ -118,11 +117,11 @@
 	/************************************************************
 	 *	Knowledge Select from Database
 	 */
-	$knowledge = new Template(_ROOT_."/templates/selectKnowledge.html");
+	$knowledge = new Template("../templates/selectKnowledge.html");
 	$data = DBRead("knowledge", "ORDER BY name");
 	foreach($data as $row)
 	{
-		$option = new Template(_ROOT_."/templates/optionKnowledge.html");
+		$option = new Template("../templates/optionKnowledge.html");
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("Cost", $row['cost']);
@@ -136,7 +135,7 @@
 	/************************************************************
 	 *	JavaScript
 	 */
-	$personage->set("JavaScriptLink", "/scripts/createPersonage.js");
+	$personage->set("JavaScriptLink", "../scripts/createPersonage.js");
 	
 	echo $personage->output();
 ?>
