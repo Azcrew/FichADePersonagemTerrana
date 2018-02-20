@@ -1,10 +1,10 @@
 <?php
 
-	include("../class/template.class");
-	include("../config/config.php");
-	include("../config/pass.php");
-	include("../lib/connection.php");
-	include("../lib/database.php");
+	include_once("../class/template.class");
+	include_once("../config/config.php");
+	include_once("../config/pass.php");
+	include_once("../lib/connection.php");
+	include_once("../lib/database.php");
     
     require_once "../lib/authCode.php";
     
@@ -16,16 +16,16 @@
 	$personage->set("PageCharset", HTML_CHARSET);
     $personage->set("PageTitle", HTML_TITLE);
 	$personage->set("StyleSheetLink", MAIN_CSS);
-    
-    /*
-     *  Playable Character or Master 
+
+	
+    /************************************************************
+	 *  Playable Character or Master 
      */
-    $personage->set("Action", "../php/createPersonage.php");
+	$personage->set("Action", "../php/createPersonage.php");
     if($_GET['type'] == "npc")
     {
-        $personage->set("Action", "../php/createNPC.php");   
+		$personage->set("Action", "../php/createNPC.php");   
     }
-
 
 	/************************************************************
 	 *	Race Select from Database
@@ -89,8 +89,6 @@
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("Cost", $row['cost']);
-		$option->set("ModPV", $row['modPV']);
-		$option->set("ModPM", $row['modPM']);
 		$option->set("Description", $row['description']);
 		$benefit->add("OptionBenefit", $option->output());
 	}
@@ -107,8 +105,6 @@
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
 		$option->set("Cost", $row['cost']);
-		$option->set("ModPV", $row['modPV']);
-		$option->set("ModPM", $row['modPM']);
 		$option->set("Description", $row['description']);
 		$injury->add("OptionInjury", $option->output());
 	}
@@ -124,18 +120,58 @@
 		$option = new Template("../templates/optionKnowledge.html");
 		$option->set("Id", $row['id']);
 		$option->set("Name", $row['name']);
-		$option->set("Cost", $row['cost']);
-		$option->set("ModPV", $row['modPV']);
-		$option->set("ModPM", $row['modPM']);
+		$option->set("Cost", $row['dificult']);
 		$option->set("Description", $row['description']);
 		$knowledge->add("OptionKnowledge", $option->output());
 	}
 	$personage->set("SelectKnowledge", $knowledge->output());
 
 	/************************************************************
-	 *	JavaScript
+	 *	Skill Select from Database
 	 */
-	$personage->set("JavaScriptLink", "../scripts/createPersonage.js");
+	$skill = new Template("../templates/selectSkill.html");
+	$data = DBRead("skill", "ORDER BY name");
+	foreach($data as $row)
+	{
+		$option = new Template("../templates/optionSkill.html");
+		$option->set("Id", $row['id']);
+		$option->set("Name", $row['name']);
+		$option->set("Description", $row['description']);
+		$skill->add("OptionSkill", $option->output());
+	}
+	$personage->set("SelectSkill", $skill->output());
+
+	/************************************************************
+	 *	Magic Select from Database
+	 */
+	$magic = new Template("../templates/selectMagic.html");
+	$data = DBRead("magic", "ORDER BY name");
+	foreach($data as $row)
+	{
+		$option = new Template("../templates/optionMagic.html");
+		$option->set("Id", $row['id']);
+		$option->set("Name", $row['name']);
+		$option->set("Description", $row['description']);
+		$magic->add("OptionMagic", $option->output());
+	}
+	$personage->set("SelectMagic", $magic->output());
+
+	/************************************************************
+	 *	Item Select from Database
+	 */
+	$knowledge = new Template("../templates/selectItem.html");
+	$data = DBRead("item", "ORDER BY name");
+	foreach($data as $row)
+	{
+		$option = new Template("../templates/optionItem.html");
+		$option->set("Id", $row['id']);
+		$option->set("Name", $row['name']);
+		$option->set("Cost", $row['dificult']);
+		$option->set("Description", $row['description']);
+		$knowledge->add("OptionItem", $option->output());
+	}
+	$personage->set("SelectItem", $knowledge->output());
 	
+	$personage->set("BoxSize", 5);
 	echo $personage->output();
 ?>
