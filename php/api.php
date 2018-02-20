@@ -1,18 +1,26 @@
 <?php
 
-	include("../config/config.php");
-	include("../config/pass.php");
-	include("../lib/connection.php");
-	include("../lib/database.php");
+	include_once("../config/config.php");
+	include_once("../config/pass.php");
+	include_once("../lib/connection.php");
+	include_once("../lib/database.php");
 	
 	$table = $_GET['table'];
 	$id = $_GET['id'];
 	$field = $_GET['field'];
 	
-	$data = DBRead($table, "WHERE id={$id}", $field);
+	if(isset($id))
+	{
+		$data = DBRead($table, "WHERE id={$id}");
+	}
+	else
+	{
+		$data = DBRead($table);
+	}
+	
 	foreach($data as $d)
 	{
-        if($d[$field])
-		    echo $d[$field];
+		print(json_encode($d, JSON_PRETTY_PRINT));
+		echo "<br>";
 	}
 ?>

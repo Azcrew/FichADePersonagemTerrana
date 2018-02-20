@@ -1,10 +1,10 @@
 <?php
     
-	include("../class/template.class");
-	include("../config/config.php");
-	include("../config/pass.php");
-	include("../lib/connection.php");
-    include("../lib/database.php");
+	include_once("../class/template.class");
+	include_once("../config/config.php");
+	include_once("../config/pass.php");
+	include_once("../lib/connection.php");
+    include_once("../lib/database.php");
     
     require_once "../lib/authCode.php";
     

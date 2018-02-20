@@ -1,9 +1,9 @@
 <?php
 
-    include("../config/config.php");
-    include("../config/pass.php");
-    include("../lib/connection.php");
-    include("../lib/database.php");
+    include_once("../config/config.php");
+    include_once("../config/pass.php");
+    include_once("../lib/connection.php");
+    include_once("../lib/database.php");
 
     session_start();
     if($_SESSION['privileges'])

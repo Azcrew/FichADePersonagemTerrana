@@ -1,10 +1,10 @@
 <?php
 
-	include("../class/template.class");
-	include("../config/config.php");
-	include("../config/pass.php");
-	include("../lib/connection.php");
-    include("../lib/database.php");
+	include_once("../class/template.class");
+	include_once("../config/config.php");
+	include_once("../config/pass.php");
+	include_once("../lib/connection.php");
+    include_once("../lib/database.php");
     
     require_once "../lib/authCode.php";
 
@@ -52,9 +52,9 @@
                 $template->add("Content", $adventureLevel->output());
 
                 $adventurePoints = new Template($templateInput);
-                $adventurePoints->set("Name", "points");
+                $adventurePoints->set("Name", "dificult");
                 $adventurePoints->set("Type", "number");
-                $adventurePoints->set("PlaceHolder", "Pontos Iniciais");
+                $adventurePoints->set("PlaceHolder", "Dificldade");
                 $template->add("Content", $adventurePoints->output());
 
                 break;
@@ -69,16 +69,22 @@
                 $template->add("Content", $raceCost->output());
 
                 $raceHP = new Template($templateInput);
-                $raceHP->set("Name", "modPV");
+                $raceHP->set("Name", "modHP");
                 $raceHP->set("Type", "number");
                 $raceHP->set("PlaceHolder", "Modif. PV");
                 $template->add("Content", $raceHP->output());
 
                 $raceMP = new Template($templateInput);
-                $raceMP->set("Name", "modPM");
+                $raceMP->set("Name", "modMP");
                 $raceMP->set("Type", "number");
                 $raceMP->set("PlaceHolder", "Modif. PM");
                 $template->add("Content", $raceMP->output());
+                
+                $raceSP = new Template($templateInput);
+                $raceSP->set("Name", "modSP");
+                $raceSP->set("Type", "number");
+                $raceSP->set("PlaceHolder", "Modif. PS");
+                $template->add("Content", $raceSP->output());
 
                 break;
             case 'class';
@@ -134,9 +140,9 @@
 
                 $knowledge = new Template($templateInput);
 
-                $knowledge->set("Name", "cost");
+                $knowledge->set("Name", "dificult");
                 $knowledge->set("Type", "number");
-                $knowledge->set("PlaceHolder", "Custo");
+                $knowledge->set("PlaceHolder", "Dificuldade");
                 $template->add("Content", $knowledge->output());
 
                 break;
@@ -144,14 +150,19 @@
                 $template->set("Title", "Itens");
                 $table = "item";
 
-                $input->set("Name", "level");
+                $input->set("Name", "rarity");
                 $input->set("Type", "number");
-                $input->set("PlaceHolder", "Nivel");
+                $input->set("PlaceHolder", "Raridade");
                 $template->add("Content", $input->output());
 
                 $input->set("Name", "class");
                 $input->set("Type", "number");
                 $input->set("PlaceHolder", "Classe");
+                $template->add("Content", $input->output());
+
+                $input->set("Name", "effect");
+                $input->set("Type", "number");
+                $input->set("PlaceHolder", "Efeito");
                 $template->add("Content", $input->output());
 
                 break;
@@ -159,14 +170,19 @@
                 $template->set("Title", "Magias");
                 $table = "magic";
                 
-                $input->set("Name", "level");
+                $input->set("Name", "cost");
                 $input->set("Type", "number");
-                $input->set("PlaceHolder", "Nivel");
+                $input->set("PlaceHolder", "Custo");
                 $template->add("Content", $input->output());
 
                 $input->set("Name", "class");
                 $input->set("Type", "number");
                 $input->set("PlaceHolder", "Classe");
+                $template->add("Content", $input->output());
+
+                $input->set("Name", "effect");
+                $input->set("Type", "number");
+                $input->set("PlaceHolder", "Efeito");
                 $template->add("Content", $input->output());
 
                 break;
@@ -174,14 +190,19 @@
                 $template->set("Title", "Habilidades");
                 $table = "skill";
                 
-                $input->set("Name", "level");
+                $input->set("Name", "cost");
                 $input->set("Type", "number");
-                $input->set("PlaceHolder", "Nivel");
+                $input->set("PlaceHolder", "Custo");
                 $template->add("Content", $input->output());
 
                 $input->set("Name", "class");
                 $input->set("Type", "number");
                 $input->set("PlaceHolder", "Classe");
+                $template->add("Content", $input->output());
+
+                $input->set("Name", "effect");
+                $input->set("Type", "number");
+                $input->set("PlaceHolder", "Efeito");
                 $template->add("Content", $input->output());
 
                 break;

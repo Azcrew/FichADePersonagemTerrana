@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset={PageCharset}" />
     <link rel="stylesheet" type="text/css" href="{StyleSheetLink}">
-    <script type="text/javascript" src="{JavaScriptLink}"></script>
+    <script type="text/javascript" src="/scripts/experience.js"></script>
+    <script type="text/javascript" src="/scripts/sheet.js"></script>
     <title> {PageTitle} </title>
     <link rel="icon" type="image/png" sizes="32x32" href="../icon32.png">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
@@ -12,10 +13,12 @@
 <body>
     <h1>Novo Personagem</h1>
     <form action="{Action}" method="POST">
+        <input type="hidden" id="levelHidden", name="level" value="">
         <table width="75%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
             <tr>
                 <td colspan="100">
-                    <input type="text" name="name" size="16" class="history_input" placeholder="Nome"> </td>
+                    <input type="text" name="name" size="16" class="history_input" placeholder="Nome"> 
+                </td>
                 <td colspan="100"> {SelectRace} </td>
                 <td colspan="100"> {SelectClass} </td>
             </tr>
@@ -28,7 +31,7 @@
                     <div id="points" name="points"> </div>
                 </td>
             </tr>
-            <tr>
+            <tr> 
                 <td>
                     <br>
                 </td>
@@ -186,7 +189,7 @@
                                 <div class="text_output" title="Pontos de Stamina"> PS </div>
                             </td>
                             <td>
-                                <div id="attack" name="attack" class="text_output"> 0 </div>
+                                <div id="SP" name="SP" class="text_output"> 0 </div>
                             </td>
                         </tr>
                         <tr>
@@ -194,7 +197,7 @@
                                 <div class="text_output" title="Regeneração de PS"> RPS </div>
                             </td>
                             <td>
-                                <div id="defense" name="defense" class="text_output"> 0 </div>
+                                <div id="SPR" name="SPR" class="text_output"> 0 </div>
                             </td>
                         </tr>
                     </table>
@@ -211,13 +214,32 @@
                 <td colspan="100"> Perícias </td>
             </tr>
             <tr>
-                <td colspan="5" />
+                <td colspan="5"/>
                 <td colspan="90"> {SelectBenefit} </td>
-                <td colspan="10" />
+                <td colspan="10"/>
                 <td colspan="90"> {SelectInjury} </td>
-                <td colspan="10" />
+                <td colspan="10"/>
                 <td colspan="90"> {SelectKnowledge} </td>
-                <td colspan="5" />
+                <td colspan="5"/>
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="100"> Habilidades </td>
+                <td colspan="100"> Magias </td>
+                <td colspan="100"> Itens </td>
+            </tr>
+            <tr>
+                <td colspan="5"/>
+                <td colspan="90"> {SelectSkill} </td>
+                <td colspan="10"/>
+                <td colspan="90"> {SelectMagic} </td>
+                <td colspan="10"/>
+                <td colspan="90"> {SelectItem} </td>
+                <td colspan="5"/>
             </tr>
             <tr>
                 <td>
@@ -230,11 +252,11 @@
             <tr>
                 <td colspan="300">
                     <input type="text" name="history" placeholder="Faça uma descrição breve do seu Personagem" class="history_input" /> </td>
-            </tr>
-        </table>
-        <br>
-        <input type="submit" value="Criar" class="submit_input" />
-    </form>
-</body>
-
-</html>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Criar" class="submit_input" />
+        </form>
+    </body>
+    
+    </html>
