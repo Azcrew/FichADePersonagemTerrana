@@ -1,9 +1,11 @@
 #configs and passwords
 !/config
 config/*
+
 !/.vscode
 vscode/*
+
 !/node_modules
 node_modules/*
 
-packape.json
+*/*.json
