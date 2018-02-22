@@ -3,4 +3,7 @@
 config/*
 !/.vscode
 vscode/*
-*/*.json
+!/node_modules
+node_modules/*
+
+packape.json
