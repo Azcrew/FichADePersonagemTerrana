@@ -48,14 +48,19 @@
     $character->setBenefit($_POST['benefit']);
     $character->setInjury($_POST['injury']);
     $character->setKnowledge($_POST['knowledge']);
-
+    $character->setSkills($_POST['skill']);
+    $character->setMagics($_POST['magic']);
+    $character->setItens($_POST['item']);
+    /*
+/**/
     $character->setHistory($_POST['history']);
 
     $character->setLevel($_POST['level']);
 
     //$db = DBInsert('character', $character);
     //print(json_encode($character, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK));
-    echo json_encode($character->getCharacter(),  JSON_FORCE_OBJECT);
+    /*echo json_encode($character->getCharacter(),  JSON_FORCE_OBJECT);
+    */
     echo '<br><br>';
     echo $character->encrypt();
     echo '<br><br>';

@@ -16,27 +16,14 @@ class Character
 {
     //##TODO Transfer all set code to a just one medoth with data loop
     protected $character = array();
+    
 
-    /** 
-    * Construction Function
-    * 
-    * @param Character $character if have a formated array
-    * 
-    * @return null
-    */
     function _construct($character)
     {
         $this->character = $character;
     }
     
-    /** 
-    * Construction Function
-    * 
-    * @param player       $player       int
-    * @param OnlyPlayable $onlyPlayable bool
-    * 
-    * @return null
-    */
+
     function setPlayer($player, $onlyPlayable)
     {
         $this->character['player'] = $player;
@@ -44,69 +31,33 @@ class Character
         $this->character['onlyplayable'] = $onlyPlayable;
     }
     
-    /** 
-    * Construction Function
-    * 
-    * @param Name $name Character name
-    * 
-    * @return null
-    */
+
     function setName($name)
     {
         $this->character['name'] = $name; 
     }
     
-    /** 
-    * Construction Function
-    * 
-    * @param race $race Character race
-    * 
-    * @return null
-    */
+
     function setRace($race)
     {
         $this->character['race'] = $race;
     }
     
-    /**
-    * Construction Function
-    * 
-    * @param class $class Character class
-    * 
-    * @return null
-    */
+
     function setClass($class)
     {
         $this->character['class'] = $class;
     }
     
-    /********************************************************************
-    * Construction Function
-    * 
-    * @param adventure $adventure belongs to adventure
-    * 
-    * @return null
-    */
+ 
     function setAdventure($adventure)
     {
         $this->character['adventure'] = $adventure;
     }
     
-    /** 
-    * Construction Function
-    * 
-    * @param armor      $armor      int
-    * @param focus      $focus      int
-    * @param strength   $strength   int
-    * @param ability    $ability    int
-    * @param resistence $resistence int
-    * @param accuracy   $accuracy   int
-    * 
-    * @return null
-    */
     function setAspects($armor, $focus, $strength, $ability, $resistence, $accuracy)
     {
-        $aspects = array(
+        $data = array(
             'armor' => $armor,
             'focus' => $focus,
             'strength' => $strength,
@@ -114,24 +65,14 @@ class Character
             'resistence' => $resistence,
             'accuracy' => $accuracy
         );
-        $this->character['aspects'] = json_encode($aspects, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['aspects'] = $data;
     }
     
-    /** 
-    * Construction Function
-    * 
-    * @param water    $water    int
-    * @param air      $air      int
-    * @param fire     $fire     int
-    * @param ligth    $ligth    int
-    * @param earth    $earth    int
-    * @param darkness $darkness int
-    * 
-    * @return null
-    */
     function setFocus($water, $air, $fire, $ligth, $earth, $darkness)
     {
-        $focus = array(
+        $data = array(
             'water' => $water,
             'air' => $air,
             'fire' => $fire,
@@ -139,39 +80,37 @@ class Character
             'earth' => $earth,
             'darkness' => $darkness
         );
-        $this->character['focus'] = json_encode($focus, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['focus'] = $data;
     }
     
     
-    function setBenefit($benefit)
+    function setBenefit($data)
     {
-        $this->character['benefits'] = json_encode($benefit, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['benefits'] = $data;
     }
-    
     function addBenefit(){ }
-    
-    
     function removeBenefit(){ }
     
-    
-    function setInjury($injury)
+    function setInjury($data)
     {   
-        $this->character['injurys'] = json_encode($injury, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['injurys'] = $data;
     }
-    
     function addInjury(){ }
-    
-    
     function removeInjury(){ }
     
-    
-    function setKnowledge($knowledge)
+    function setKnowledge($data)
     {
-        $this->character['knowledges'] = json_encode($knowledge, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['knowledges'] = $data;
     }
-    
     function addKnowledge(){ }
-    
     function levelUpKnowledge(){ }
     
     function setHistory($history)
@@ -203,16 +142,33 @@ class Character
             'silver' => $silver,
             'copper' => $copper,
             'paragon' => $paragon
-        );
+        );      
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);  
         $this->character['points'] = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK); 
     }
     
-    function setSkills(){ }
+    function setSkills($data){
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['skills'] = $data;
+    }
     function addSkills(){ }
     function levelUpSkills(){ }
-    function setMagics(){ }
+    
+    function setMagics($data){  
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['magics'] = $data;
+    }
     function addMagics(){ }
     function levelUpMagics(){ }
+    
+    function setItens($data){
+        $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
+        $data = str_replace('"', "'", $data);
+        $this->character['itens'] = $data;
+    }
     function addItem($itemId){ }
     function removeItem($itemId){ }
     function levelUpItem($itemId){ }
@@ -225,16 +181,16 @@ class Character
         $dataToDecrypt = mb_substr($data, SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES, null, '8bit');
         $IV = mb_substr($data, 0, SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES, '8bit');
         
-        $dataNoCrypt = $this->character['password']; 
+        $dataNoCrypt = $this->character['id']; 
         
         $data = sodium_crypto_aead_chacha20poly1305_ietf_decrypt($dataToDecrypt, $dataNoCrypt, $IV, $this->key);
         return $data;
     }
-
+    
     function encrypt()
     {   
         $dataToCrypt = json_encode($this->character);
-        $dataNoCrypt = $this->character['password']; 
+        $dataNoCrypt = $this->character['id']; 
         
         $IV = random_bytes(SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES);
         $key =  sodium_crypto_aead_chacha20poly1305_ietf_keygen();
@@ -245,7 +201,7 @@ class Character
         $this->cryptedCharacter = base64_encode($IV . $dataCrypted);
         return $this->cryptedCharacter;
     }
-
+    
     function getCharacter()
     {  
         return $this->character;
