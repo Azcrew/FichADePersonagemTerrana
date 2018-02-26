@@ -18,11 +18,11 @@ var addSelectOptions = function(table){
             case 'injury':
             value = data[i]['cost'] + ' - ';
             break;
-
+            
             case 'knowledge':
             value = data[i]['dificult'] + ' - ';
             break;
-
+            
             case 'adventure':
             isHidden = 'Aventuras';
             case 'skill':
@@ -53,5 +53,30 @@ $(document).ready(function(){
     addSelectOptions('skill');
     addSelectOptions('magic');
     addSelectOptions('item');
+     
+    $('#armor').click(function(){
+        character['armor'] = this.value;
+        character['hp'] = character['level'] * character['resistance'] * character['armor'] * character['modhp'];
+        character['hpr'] = Math.trunc(character[hp] * Math.exp(1));
+        
+    });
     
 });
+
+var alterDetails = function() {
+	//define os pontos de vida e de magia, e suas regenerações
+	character[mp] = character['level'] * character['resistance'] * character['focus'] * character['modmp'];
+	character[mpr] = Math.trunc(mp * Math.exp(1));
+	character[sp] = character['level'] * character['resistance'] * character['ability] * ['modsp'];
+	character[spr] = Math.trunc(['sp'] * Math.exp(1));
+	
+	knowledge = ability * modKnow;
+	
+	//exibe os detalhes
+	$("#HP").innerText = character[hp];
+	$("#HPR").innerText = character[hpr];
+	$("#MP").innerText = character[mp];
+	$("#MPR").innerText = character[mpr];
+	$("#SP").innerText = character[sp];
+	$("#SPR").innerText = character[spr];
+}
