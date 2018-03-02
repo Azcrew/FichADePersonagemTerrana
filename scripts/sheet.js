@@ -1,34 +1,34 @@
-var character;
+var character = Array;
+
+const MOD_POINTS = 0.1;
+const HOST = 'localhost:8000';
 
 var addSelectOptions = function(table){
-    $.get( `https://localhost:8000/${table}/`, function(data) {
-    
+    $.get( `https://${HOST}/${table}/`, function(data) {
     
     for(var i = 0; i < data.length; i++){
-        var value;
+        var cost = '';
+        var value =  data[i]['id'];
         var isHidden = '';
+        
         switch(table){
             case 'race':
             isHidden = 'Raças';
-            value = data[i]['cost'] + ' - ';
-            break
+            cost = data[i]['cost'] + ' - ';
+            break;
             case 'class':
             isHidden = 'Classes';
             case 'benefit':
             case 'injury':
-            value = data[i]['cost'] + ' - ';
+            cost = data[i]['cost'] + ' - ';
             break;
             
             case 'knowledge':
-            value = data[i]['dificult'] + ' - ';
+            cost = data[i]['dificult'] + ' - ';
             break;
             
             case 'adventure':
             isHidden = 'Aventuras';
-            case 'skill':
-            case 'magic':
-            case 'item':
-            value = '';
         }
         
         if(isHidden){
@@ -36,14 +36,32 @@ var addSelectOptions = function(table){
         }
         
         $(`#${table}`).append($('<option>', {
-            value: i,
-            text: value + data[i]['name'],
+            value: value,
+            text: cost + data[i]['name'],
             title: data[i]['description']
         }));
     }});
 }
+var calcHP = function(){
+    character['hp'] = character['level'] * character['resistance'] * character['armor'] * character['modhp'];
+    character['hpr'] = Math.trunc(character['hp'] * Math.exp(1) * MOD_POINTS);
+    $("#HP").text(character['hp'] ? character['hp'] : 0);
+    $("#HPR").text(character['hpr'] ? character['hpr'] : 0);
+}
+var calcMP = function(){
+    character['mp'] = character['level'] * character['resistance'] * character['focus'] * character['modmp'];
+    character['mpr'] = Math.trunc(character['mp'] * Math.exp(1) * MOD_POINTS);
+    $("#MP").text(character['mp'] ? character['mp'] : 0);
+    $("#MPR").text(character['mpr'] ? character['mpr'] : 0);
+}
+var calcSP = function(){
+    character['sp'] = character['level'] * character['resistance'] * character['ability'] * character['modsp'];
+    character['spr'] = Math.trunc(character['sp'] * Math.exp(1) * MOD_POINTS);
+    $("#SP").text(character['sp'] ? character['sp'] : 0);
+    $("#SPR").text(character['spr'] ? character['spr'] : 0);
+}
 
-$(document).ready(function(){
+$('document').ready(function(){
     addSelectOptions('race');
     addSelectOptions('class');
     addSelectOptions('adventure');
@@ -53,30 +71,107 @@ $(document).ready(function(){
     addSelectOptions('skill');
     addSelectOptions('magic');
     addSelectOptions('item');
-     
-    $('#armor').click(function(){
-        character['armor'] = this.value;
-        character['hp'] = character['level'] * character['resistance'] * character['armor'] * character['modhp'];
-        character['hpr'] = Math.trunc(character[hp] * Math.exp(1));
-        
+    
+    $('#race').change(function(){
+        url = `https://${HOST}/race/${this.value}`;
+        $.get(url, function(data){
+            character['cost']['race'] = data[0]['cost'];
+            character['modHP'] = data[0]['modHP'];
+            character['modMP'] = data[0]['modMP'];
+            character['modSP'] = data[0]['modSP'];
+        });
     });
     
+    $('#class').change(function(){
+        url = `https://${HOST}/class/${this.value}`;
+        $.get(url, function(data){
+            character['cost']['class'] = data[0]['cost'];
+            character['modknow'] = data[0]['modknow'];
+            alterPoints()
+        });
+    });
+    
+    $('#adventure').change(function(){
+        url = `https://${HOST}/adventure/${this.value}`;
+        $.get(url, function(data){
+            character['dificult'] = data[0]['dificult'];
+            character['level'] = data[0]['level'];
+            $('#level').text('Nivel - ' + character['level']);
+            alterPoints();
+        });
+    });
+    
+    $('#armor').change(function(){
+        character['armor'] = this.value;
+        calcHP();
+        alterPoints();
+    }); 
+    
+    $('#focus').change(function(){
+        character['focus'] = this.value;
+        calcMP();
+        alterFocus();
+        alterPoints();
+    });
+    
+    $('#strength').change(function(){
+        character['strength'] = this.value;
+        alterPoints();
+    });
+    
+    $('#ability').change(function(){
+        character['ability'] = this.value;
+        calcSP();
+        alterPoints();
+    });
+    
+    $('#resistance').change(function(){
+        character['resistance'] = this.value;
+        calcHP();
+        calcMP();
+        calcSP();
+        alterPoints();
+    });
+    
+    $('#accuracy').change(function(){
+        character['accuracy'] = this.value;
+        alterPoints();
+    });
+    
+    $('#water').change(function(){
+        character['water'] = this.value;
+        alterFocus();
+        alterPoints();
+    });
+    
+    $('#air').change(function(){
+        character['air'] = this.value;
+        alterFocus();
+        alterPoints();
+    });
+    
+    $('#fire').change(function(){
+        character['fire'] = this.value;
+        alterFocus();
+        alterPoints();
+    });
+    
+    $('#ligth').change(function(){
+        character['ligth'] = this.value;
+        alterFocus();
+        alterPoints();
+    });
+    $('#earth').change(function(){
+        character['earth'] = this.value;
+        alterFocus();
+        alterPoints();
+    });
+    
+    $('#darkness').change(function(){
+        character['darkness'] = this.value;
+        alterFocus();
+        alterPoints();
+    });
+    
+    
 });
-
-var alterDetails = function() {
-	//define os pontos de vida e de magia, e suas regenerações
-	character[mp] = character['level'] * character['resistance'] * character['focus'] * character['modmp'];
-	character[mpr] = Math.trunc(mp * Math.exp(1));
-	character[sp] = character['level'] * character['resistance'] * character['ability] * ['modsp'];
-	character[spr] = Math.trunc(['sp'] * Math.exp(1));
-	
-	knowledge = ability * modKnow;
-	
-	//exibe os detalhes
-	$("#HP").innerText = character[hp];
-	$("#HPR").innerText = character[hpr];
-	$("#MP").innerText = character[mp];
-	$("#MPR").innerText = character[mpr];
-	$("#SP").innerText = character[sp];
-	$("#SPR").innerText = character[spr];
-}
