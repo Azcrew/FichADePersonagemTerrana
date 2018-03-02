@@ -12,44 +12,49 @@
 * @link      terrana.ddns.net
 */
 
+const SAVE_PATH = '../characters/';
+const EXTENSION = '.char';
+
 class Character
 {
     //##TODO Transfer all set code to a just one medoth with data loop
     protected $character = array();
+    protected $key;
+    public $cryptedCharacter;
     
-
+    
     function _construct($character)
     {
         $this->character = $character;
     }
     
-
-    function setPlayer($player, $onlyPlayable)
+    
+    function setPlayer($player, $allowAsNPC)
     {
         $this->character['player'] = $player;
         
-        $this->character['onlyplayable'] = $onlyPlayable;
+        $this->character['allowasnpc'] = $allowAsNPC;
     }
     
-
+    
     function setName($name)
     {
         $this->character['name'] = $name; 
     }
     
-
+    
     function setRace($race)
     {
         $this->character['race'] = $race;
     }
     
-
+    
     function setClass($class)
     {
         $this->character['class'] = $class;
     }
     
- 
+    
     function setAdventure($adventure)
     {
         $this->character['adventure'] = $adventure;
@@ -58,12 +63,12 @@ class Character
     function setAspects($armor, $focus, $strength, $ability, $resistence, $accuracy)
     {
         $data = array(
-            'armor' => $armor,
-            'focus' => $focus,
-            'strength' => $strength,
-            'ability' => $ability,
-            'resistence' => $resistence,
-            'accuracy' => $accuracy
+            'armor' => $armor + 0,
+            'focus' => $focus + 0,
+            'strength' => $strength + 0,
+            'ability' => $ability + 0,
+            'resistence' => $resistence + 0,
+            'accuracy' => $accuracy + 0
         );
         $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
         $data = str_replace('"', "'", $data);
@@ -73,12 +78,12 @@ class Character
     function setFocus($water, $air, $fire, $ligth, $earth, $darkness)
     {
         $data = array(
-            'water' => $water,
-            'air' => $air,
-            'fire' => $fire,
-            'ligth' => $ligth,
-            'earth' => $earth,
-            'darkness' => $darkness
+            'water' => $water + 0,
+            'air' => $air + 0,
+            'fire' => $fire + 0,
+            'ligth' => $ligth + 0,
+            'earth' => $earth + 0,
+            'darkness' => $darkness + 0
         );
         $data = json_encode($data, JSON_FORCE_OBJECT | JSON_NUMERIC_CHECK);
         $data = str_replace('"', "'", $data);
@@ -202,9 +207,29 @@ class Character
         return $this->cryptedCharacter;
     }
     
+    function save(){
+        $this->encrypt();
+        
+        $character['name'] = $this->character['name'];
+        $character['allowasnpc'] = $this->character['allowasnpc'];
+        $character['ckey'] = base64_encode($this->key);
+        $character['ccharacter'] = $this->cryptedCharacter;
+        
+        $file = SAVE_PATH.$character['player'].$character['name'].EXTENSION;
+
+        if($file = fopen($file, 'w')){
+            fputs($file, $character['name'].PHP_EOL);
+            fputs($file, $character['allowasnpc'].PHP_EOL);
+            fputs($file, $character['ckey'].PHP_EOL);
+            fputs($file, $character['ccharacter'].PHP_EOL);
+            fclose();
+        }
+        return DBInsert('character', $character);
+    }
+    
     function getCharacter()
     {  
-        return $this->character;
+        return json_encode($this->character);
     }
 }
 ?>

@@ -2,12 +2,17 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset={PageCharset}" />
-    <link rel="stylesheet" type="text/css" href="{StyleSheetLink}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-    <script type="text/javascript" src="/scripts/experience.js"></script>
-    <script type="text/javascript" src="/scripts/sheet.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/jquery.js"></script>
+
+    <script src="/scripts/experience.js"></script>
+    <script src="/scripts/sheet.js"></script>
+    
     <title> {PageTitle} </title>
     <link rel="icon" type="image/png" sizes="32x32" href="../icon32.png">
+    
+    <link rel="stylesheet" type="text/css" href="{StyleSheetLink}">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 </head>
 
@@ -15,6 +20,7 @@
     <h1>Novo Personagem</h1>
     <form action="{Action}" method="POST">
         <input type="hidden" id="levelHidden", name="level" value="">
+        <input type="hidden" id="npc", name="npc" value="{IsNPC}">
         <table width="75%" border="0" cellspacing="2" cellpadding="2" align="center" class="main_table">
             <tr>
                 <td colspan="100">

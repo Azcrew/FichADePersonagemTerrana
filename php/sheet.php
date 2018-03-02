@@ -21,10 +21,15 @@
 	 *  Playable Character or Master 
      */
 	$personage->set("Action", "../php/createPersonage.php");
-    if($_GET['type'] == "npc")
+    if($_GET['type'] == "npc") 
     {
 		$personage->set("Action", "../php/createNPC.php");   
-    }
+	}
+	/************************************************************
+	 *  Allow Character as NPC
+	 */
+	session_start();
+	$personage->set("IsNPC", $_SESSION['AllowAsNPC']);
 	
 	$personage->set("BoxSize", 5);
 	echo $personage->output();
