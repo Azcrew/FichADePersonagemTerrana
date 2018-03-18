@@ -5,7 +5,7 @@ var pointsOK = false;
 var focusOK = false;
 
 const MOD_REGEM = 0.1;
-const HOST = 'localhost:8000';
+const HOST = '192.168.15.10:8000';
 
 var addSelectOptions = function(table){
     $.get( `https://${HOST}/${table}/`, function(data) {
