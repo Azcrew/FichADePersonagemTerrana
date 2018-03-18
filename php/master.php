@@ -18,10 +18,8 @@
         $template->set("StyleSheetLink", MAIN_CSS);
         
         $user = ucfirst($_SESSION['user']);
-        
-
         $template->set("UserName", $user);
-        $template->set("UserPage", "n={$_SESSION['name']}");
+        $template->set("UserPage", "m={$_SESSION['user']}");
 
         echo $template->output();
     }
