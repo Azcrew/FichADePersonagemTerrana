@@ -229,13 +229,10 @@ class Character
         return DBInsert('character', $character);
     }*/
     
-    function save()
-    {
-        $character['player'] = null;
-        $character['name'] = null; 
-        $character['allowasnpc'] = null;
-        $character['ckey'] = null;
-        $character['ccharacter'] = null; 
+    function save(){
+        $character['player'] = $this->character['player'];
+        $character['name'] = $this->character['name']; 
+        $character['allowasnpc'] = $this->character['allowasnpc'];
         $character['json'] = $this->getCharacter();
         return DBInsert('character', $character);
     }
