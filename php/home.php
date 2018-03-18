@@ -19,6 +19,7 @@
     if($_SESSION['privileges'])
     {
         $home->set("MasterPage", 'Pagina do Mestre');
+        $home->set("UserPage", "p={$_SESSION['user']}");
     }
     else
     {

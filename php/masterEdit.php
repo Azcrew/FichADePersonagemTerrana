@@ -46,15 +46,21 @@
                 $table = "adventure";
 
                 $adventureLevel = new Template($templateInput);
+                $adventureLevel->set("Name", "master");
+                $adventureLevel->set("Type", "number");
+                $adventureLevel->set("PlaceHolder", "Mestre");
+                $template->add("Content", $adventureLevel->output());
+
+                $adventureLevel = new Template($templateInput);
                 $adventureLevel->set("Name", "level");
                 $adventureLevel->set("Type", "number");
                 $adventureLevel->set("PlaceHolder", "Nivel Inicial");
                 $template->add("Content", $adventureLevel->output());
 
                 $adventurePoints = new Template($templateInput);
-                $adventurePoints->set("Name", "dificult");
+                $adventurePoints->set("Name", "difficulty");
                 $adventurePoints->set("Type", "number");
-                $adventurePoints->set("PlaceHolder", "Dificldade");
+                $adventurePoints->set("PlaceHolder", "Dificuldade");
                 $template->add("Content", $adventurePoints->output());
 
                 break;
@@ -140,7 +146,7 @@
 
                 $knowledge = new Template($templateInput);
 
-                $knowledge->set("Name", "dificult");
+                $knowledge->set("Name", "difficulty");
                 $knowledge->set("Type", "number");
                 $knowledge->set("PlaceHolder", "Dificuldade");
                 $template->add("Content", $knowledge->output());
