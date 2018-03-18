@@ -180,7 +180,7 @@ class Character
     function addBank(){ }
     function removeBank(){ }
     
-    function decrypt()
+    /*function decrypt()
     {
         $data = base64_decode($this->cryptedCharacter);
         $dataToDecrypt = mb_substr($data, SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES, null, '8bit');
@@ -210,6 +210,7 @@ class Character
     function save(){
         $this->encrypt();
         
+        $character['player'] = $this->character['player'];
         $character['name'] = $this->character['name'];
         $character['allowasnpc'] = $this->character['allowasnpc'];
         $character['ckey'] = base64_encode($this->key);
@@ -218,6 +219,7 @@ class Character
         $file = SAVE_PATH.$character['player'].$character['name'].EXTENSION;
 
         if($file = fopen($file, 'w')){
+            fputs($file, $character['player'].PHP_EOL);
             fputs($file, $character['name'].PHP_EOL);
             fputs($file, $character['allowasnpc'].PHP_EOL);
             fputs($file, $character['ckey'].PHP_EOL);
@@ -225,8 +227,19 @@ class Character
             fclose();
         }
         return DBInsert('character', $character);
-    }
+    }*/
     
+    function save()
+    {
+        $character['player'] = null;
+        $character['name'] = null; 
+        $character['allowasnpc'] = null;
+        $character['ckey'] = null;
+        $character['ccharacter'] = null; 
+        $character['json'] = $this->getCharacter();
+        return DBInsert('character', $character);
+    }
+
     function getCharacter()
     {  
         return json_encode($this->character);
