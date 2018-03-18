@@ -2,11 +2,11 @@
     /*
      *Database Settings
      */
-    define('DB_HOSTNAME', '');
-    define('DB_USERNAME', '');
-    define('DB_DATABASE', '');
-    define('DB_PREFIX', '');
-    define('DB_CHARSET', '');
+    define('DB_HOSTNAME', 'localhost');
+    define('DB_USERNAME', 'terrana');
+    define('DB_DATABASE', 'terrana');
+    define('DB_PREFIX', 'tdb');
+    define('DB_CHARSET', 'utf8');
 
     /*
      *HTML Settings
@@ -18,5 +18,5 @@
     /*
      *  Encryption Settings
      */
-    define('HASH_CRIP', '');
+    define('HASH_CRIP', 'sha512');
     define('REVERSE_CRIP', '');
