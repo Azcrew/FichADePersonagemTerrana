@@ -20,7 +20,6 @@
 		$values = "'".implode("', '", $data)."'"; 
 		
 		$query = "INSERT INTO {$table} ( {$fields} ) VALUES ( $values )";
-		echo $query;
 		return DBExecute($query);
 	}
 	
