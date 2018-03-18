@@ -56,7 +56,7 @@
 
     $character->setLevel($_POST['level']);
 
-    echo $character->getCharacter();
+    //echo $character->getCharacter();
     echo '<br><br>';
     print($character->save());
 
