@@ -5,9 +5,13 @@ var pointsOK = false;
 var focusOK = false;
 
 const MOD_REGEM = 0.1;
+<<<<<<< HEAD
 const HOST = '192.168.15.10:8000';
 //const HOST = 'terrana.ddns.net:8000';
 
+=======
+const HOST = 'holy:8000';
+>>>>>>> 2ec508273ca10cfad8ccca9c62b00c74dd5443e2
 
 var addSelectOptions = function(table){
     $.get( `https://${HOST}/${table}/`, function(data) {
