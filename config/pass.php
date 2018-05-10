@@ -1,2 +1,2 @@
 <?php
-    define('DB_PASSWORD', ''); 
+    define('DB_PASSWORD', 'CP1113BUGC8'); 
