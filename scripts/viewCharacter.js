@@ -8,7 +8,7 @@ $().ready(function(){
     url = `https://${HOST}/character/${character}`;
     $.get(url, function(data){
         data = data[0];
-        console.log(data);
+        print(data);
 
     });
     
