@@ -1,6 +1,7 @@
 #configs and passwords
 !/config
 config/*
+config/
 
 !/.vscode
 vscode/*
