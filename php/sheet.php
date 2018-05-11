@@ -7,7 +7,7 @@
 	require_once "../lib/database.php";
     
     require_once "../lib/authCode.php";
-	
+
 	$personage = new Template("../templates/sheet.html");
 
 	/************************************************************

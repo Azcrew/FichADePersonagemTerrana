@@ -11,7 +11,7 @@
         unset($_POST['submit']);
         $query = DBInsert($_GET['t'], $_POST);
         
-        //header("location: ../php/master.php");
+        header("location: ../php/master.php");
     }
     else
     {
