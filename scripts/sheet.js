@@ -28,7 +28,7 @@ var addSelectOptions = function(table){
             break;
             
             case 'knowledge':
-            cost = data[i]['difficulty'] + ' - ';
+            //cost = data[i]['difficulty'] + ' - ';
             break;
             
             case 'adventure':
@@ -53,6 +53,9 @@ var alterPoints = function(){
     pts -= character['cost']['race'] ? character['cost']['race'] : 0;
     pts -= character['cost']['class'] ? character['cost']['class'] : 0;
     
+    pts -= character['cost']['benefit'] ? character['cost']['benefit'] : 0;
+    pts += character['cost']['injury'] ? character['cost']['injury'] : 0;
+
     pts -= character['armor'] ? character['armor'] : 0;
     pts -= character['focus'] ? character['focus'] : 0;
     pts -= character['strength'] ? character['strength'] : 0;
@@ -62,7 +65,7 @@ var alterPoints = function(){
  
     pointsOK = !pts ? true : false;
 
-    $('#points').text('Pontos (' + pts + ')');
+    $('#points').text('Pontos (' + (pts ? pts : 0) + ')');
 }
 
 var alterFocus = function(){
@@ -79,19 +82,20 @@ var alterFocus = function(){
 }
 
 var calcHP = function(){
-    character['hp'] = character['level'] * character['resistance'] * character['armor'] * character['modhp'];
+    character['hp'] = character['level'] * character['resistance'] * character['armor'] * character['modHP'];
     character['hpr'] = Math.trunc(character['hp'] * Math.exp(1) * MOD_REGEM);
     $("#HP").text(character['hp'] ? character['hp'] : 0);
     $("#HPR").text(character['hpr'] ? character['hpr'] : 0);
+
 }
 var calcMP = function(){
-    character['mp'] = character['level'] * character['resistance'] * character['focus'] * character['modmp'];
+    character['mp'] = character['level'] * character['resistance'] * character['focus'] * character['modMP'];
     character['mpr'] = Math.trunc(character['mp'] * Math.exp(1) * MOD_REGEM);
     $("#MP").text(character['mp'] ? character['mp'] : 0);
     $("#MPR").text(character['mpr'] ? character['mpr'] : 0);
 }
 var calcSP = function(){
-    character['sp'] = character['level'] * character['resistance'] * character['ability'] * character['modsp'];
+    character['sp'] = character['level'] * character['resistance'] * character['ability'] * character['modSP'];
     character['spr'] = Math.trunc(character['sp'] * Math.exp(1) * MOD_REGEM);
     $("#SP").text(character['sp'] ? character['sp'] : 0);
     $("#SPR").text(character['spr'] ? character['spr'] : 0);
@@ -116,6 +120,9 @@ $('document').ready(function(){
             character['modMP'] = data[0]['modMP'];
             character['modSP'] = data[0]['modSP'];
             alterPoints();
+            calcHP();
+            calcMP();
+            calcSP();
         });
     });
     
@@ -134,11 +141,45 @@ $('document').ready(function(){
             character['difficulty'] = data[0]['difficulty'];
             character['level'] = data[0]['level'];
             character['points'] = levelToPoints(character['difficulty'], character['level']);
-            $('#level').text('Nivel (' + character['level'] + ')');
+            $('#level').text('Nivel (' + (character['level'] ? character['level'] : 0) + ')');
             alterPoints();
         });
     });
     
+    $('#benefit').change(function(){
+        var benefits = $('#benefit').val();
+        character['cost']['benefit'] = 0;
+
+        url = `https://${HOST}/benefit/`;
+        $.get(url, function(data){            
+            benefits.forEach(function(beneId){
+                data.forEach(function(dataId){
+                    if(beneId == dataId['id']){
+                        character['cost']['benefit'] += dataId['cost'];
+                    }
+                });
+            });
+            alterPoints();
+        });
+    });
+
+    $('#injury').change(function(){
+        var injurys = $('#injury').val();
+        character['cost']['injury'] = 0;
+
+        url = `https://${HOST}/injury/`;
+        $.get(url, function(data){            
+            injurys.forEach(function(injuId){
+                data.forEach(function(dataId){
+                    if(injuId == dataId['id']){
+                        character['cost']['injury'] += dataId['cost'];
+                    }
+                });
+            });
+            alterPoints();
+        });
+    });
+
     $('#armor').change(function(){
         character['armor'] = this.value;
         calcHP();
